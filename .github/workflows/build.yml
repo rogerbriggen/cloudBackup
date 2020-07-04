@@ -6,6 +6,9 @@ jobs:
   build:
     name: build
     runs-on: ${{ matrix.operating-system }}
+    env:
+        DOTNET_NOLOGO: true
+        DOTNET_CLI_TELEMETRY_OPTOUT: true
     strategy:
       matrix:
         operating-system: [windows-latest] #ubuntu-latest, macOS-latest
@@ -17,24 +20,21 @@ jobs:
         uses: actions/checkout@master
 
 
-      - name: Setup dotnet env and build
+      - name: Setup dotnet env
         uses: actions/setup-dotnet@v1
         with:
             dotnet-version: '3.1.100' # SDK Version to use.
-      - run: dotnet build --configuration Release cloudBackup.sln
+
+
+      - name: build project
+        run: dotnet build --configuration Release cloudBackup.sln
 
 
       - name: Run tests
-        uses: actions/setup-dotnet@v1
-        with:
-            dotnet-version: '3.1.100' # SDK Version to use.
-      - run: dotnet test --verbosity normal
+        run: dotnet test --verbosity normal
 
 
       - name: Publish
-        uses: actions/setup-dotnet@v1
-        with:
-            dotnet-version: '3.1.100' # SDK Version to use.
       - run: dotnet publish --configuration Release --runtime win-x64 /p:PublishSingleFile=true /p:PublishTrimmed=true cloudBackupUI/cloudBackupUI.csproj
       #- run: dotnet publish --configuration Release --self-contained=true --runtime win-x64 /p:PublishSingleFile=true /p:PublishTrimmed=true src/RemoteIncrediBuild/RemoteIncrediBuild.csproj
 
