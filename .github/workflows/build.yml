@@ -35,7 +35,7 @@ jobs:
 
 
       - name: Publish
-      - run: dotnet publish --configuration Release --runtime win-x64 /p:PublishSingleFile=true /p:PublishTrimmed=true cloudBackupUI/cloudBackupUI.csproj
+        run: dotnet publish --configuration Release --runtime win-x64 /p:PublishSingleFile=true /p:PublishTrimmed=true cloudBackupUI/cloudBackupUI.csproj
       #- run: dotnet publish --configuration Release --self-contained=true --runtime win-x64 /p:PublishSingleFile=true /p:PublishTrimmed=true src/RemoteIncrediBuild/RemoteIncrediBuild.csproj
 
 
