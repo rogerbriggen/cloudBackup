@@ -28,14 +28,14 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
             dotnet-version: '3.1.100' # SDK Version to use.
-      - run: dotnet test --verbosity normal /
+      - run: dotnet test --verbosity normal
 
 
       - name: Publish
         uses: actions/setup-dotnet@v1
         with:
             dotnet-version: '3.1.100' # SDK Version to use.
-      - run: dotnet publish --configuration Release --runtime win-x64 /p:PublishSingleFile=true /p:PublishTrimmed=true cloudBackupCore/cloudBackupCore.csproj
+      - run: dotnet publish --configuration Release --runtime win-x64 /p:PublishSingleFile=true /p:PublishTrimmed=true cloudBackupUI/cloudBackupUI.csproj
       #- run: dotnet publish --configuration Release --self-contained=true --runtime win-x64 /p:PublishSingleFile=true /p:PublishTrimmed=true src/RemoteIncrediBuild/RemoteIncrediBuild.csproj
 
 
@@ -43,4 +43,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
             name: RemoteIncrediBuild_Release_x64
-            path: src\cloudBackupCore\bin\Release\netcoreapp3.1\win-x64\publish\
+            path: cloudBackupUI\bin\Release\netcoreapp3.1\win-x64\publish\
