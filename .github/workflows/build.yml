@@ -23,24 +23,34 @@ jobs:
       - name: Setup dotnet env
         uses: actions/setup-dotnet@v1
         with:
-            dotnet-version: '3.1.100' # SDK Version to use.
+            dotnet-version: '3.1.x' # SDK Version to use.  3.1.x uses the latest version of the 3.1 channel
 
 
-      - name: build project
+      - name: Build projects
         run: dotnet build --configuration Release cloudBackup.sln
 
 
-      - name: Run tests
+      - name: Run unit-tests
         run: dotnet test --verbosity normal
 
 
-      - name: Publish
-        run: dotnet publish --configuration Release --runtime win-x64 /p:PublishSingleFile=true /p:PublishTrimmed=true cloudBackupUI/cloudBackupUI.csproj
-      #- run: dotnet publish --configuration Release --self-contained=true --runtime win-x64 /p:PublishSingleFile=true /p:PublishTrimmed=true src/RemoteIncrediBuild/RemoteIncrediBuild.csproj
+      - name: Publish for Win-x64 as SingleFile
+        run: dotnet publish --configuration Release --runtime win-x64 --output cloudBackupUI/bin/Release/netcoreapp3.1/win-x64/publish_singlefile/ /p:PublishSingleFile=true /p:PublishTrimmed=true cloudBackupUI/cloudBackupUI.csproj
 
 
-      - name: Upload artifact
+      - name: Upload artifact for Win-x64 as SingleFile
         uses: actions/upload-artifact@v1
         with:
-            name: RemoteIncrediBuild_Release_x64
-            path: cloudBackupUI\bin\Release\netcoreapp3.1\win-x64\publish\
+            name: RemoteIncrediBuild_Release_Win-x64
+            path: cloudBackupUI/bin/Release/netcoreapp3.1/win-x64/publish_singlefile/
+
+      # With single file you cannot edit appsettings.json... or only in the temp folder... so we create it also not as single file
+        - name: Publish for Win-x64
+        run: dotnet publish --configuration Release --runtime win-x64 /p:PublishTrimmed=true cloudBackupUI/cloudBackupUI.csproj
+
+
+      - name: Upload artifact for Win-x64
+        uses: actions/upload-artifact@v1
+        with:
+            name: RemoteIncrediBuild_Release_Win-x64
+            path: cloudBackupUI/bin/Release/netcoreapp3.1/win-x64/publish/
