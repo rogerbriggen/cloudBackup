@@ -7,8 +7,9 @@ jobs:
     name: build
     runs-on: ${{ matrix.operating-system }}
     env:
-        DOTNET_NOLOGO: true
-        DOTNET_CLI_TELEMETRY_OPTOUT: true
+        DOTNET_MULTILEVEL_LOOKUP: false      #use our version which we install ourself... see https://github.com/actions/setup-dotnet#environment-variables-to-use-with-dotnet
+        DOTNET_NOLOGO: true                  #speed up things
+        DOTNET_CLI_TELEMETRY_OPTOUT: true    #do not send telemetry to Microsoft
     strategy:
       matrix:
         operating-system: [windows-latest] #ubuntu-latest, macOS-latest
@@ -23,7 +24,7 @@ jobs:
       - name: Setup dotnet env
         uses: actions/setup-dotnet@v1
         with:
-            dotnet-version: '3.1.x' # SDK Version to use.  3.1.x uses the latest version of the 3.1 channel
+            dotnet-version: '3.1.100' # SDK Version to use.  3.1.x uses the latest version of the 3.1 channel
 
 
       - name: Build projects
