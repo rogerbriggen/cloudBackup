@@ -5,7 +5,27 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudBackupCore", "cloudBackupCore\cloudBackupCore.csproj", "{46195AF7-EC06-46FD-BAD3-1E031842BD9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cloudBackupUI", "cloudBackupUI\cloudBackupUI.csproj", "{DC7631F1-0AD5-493E-9B96-52DBA9A4EB3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cloudBackupUI", "cloudBackupUI\cloudBackupUI.csproj", "{DC7631F1-0AD5-493E-9B96-52DBA9A4EB3B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B9924232-1DE9-4F92-87BB-D3900ACF3835}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.github\dependabot.yml = .github\dependabot.yml
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{D0B305A1-3689-4CBA-A973-F922C125AC83}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{44CA15C7-77EC-49A4-89C9-2716DF81AAF5}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build.yml = .github\workflows\build.yml
+		.github\workflows\codeql-analysis.yml = .github\workflows\codeql-analysis.yml
+		.github\workflows\remove_old_artefacts.yml = .github\workflows\remove_old_artefacts.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +44,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D0B305A1-3689-4CBA-A973-F922C125AC83} = {B9924232-1DE9-4F92-87BB-D3900ACF3835}
+		{44CA15C7-77EC-49A4-89C9-2716DF81AAF5} = {D0B305A1-3689-4CBA-A973-F922C125AC83}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FD6CF238-B79B-4AFF-80BA-025364348277}

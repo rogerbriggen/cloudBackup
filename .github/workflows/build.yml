@@ -36,14 +36,14 @@ jobs:
 
 
       - name: Publish for Win-x64 as SingleFile
-        run: dotnet publish --configuration Release --runtime win-x64 --output cloudBackupUI/bin/Release/netcoreapp3.1/win-x64/publish_singlefile/ /p:PublishSingleFile=true /p:PublishTrimmed=true cloudBackupUI/cloudBackupUI.csproj
+        run: dotnet publish --configuration Release --runtime win-x64 --output cloudBackupUI/bin/Release/net5.0-windows/win-x64/publish_singlefile/ /p:PublishSingleFile=true /p:PublishTrimmed=true cloudBackupUI/cloudBackupUI.csproj
 
 
       - name: Upload artifact for Win-x64 as SingleFile
         uses: actions/upload-artifact@v1
         with:
             name: RemoteIncrediBuild_Release_Win-x64_SingleFile
-            path: cloudBackupUI/bin/Release/netcoreapp3.1/win-x64/publish_singlefile/
+            path: cloudBackupUI/bin/Release/net5.0-windows/win-x64/publish_singlefile/
 
       # With single file you cannot edit appsettings.json... or only in the temp folder... so we create it also not as single file
       - name: Publish for Win-x64
@@ -54,4 +54,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
             name: RemoteIncrediBuild_Release_Win-x64
-            path: cloudBackupUI/bin/Release/netcoreapp3.1/win-x64/publish/
+            path: cloudBackupUI/bin/Release/net5.0-windows/win-x64/publish/
