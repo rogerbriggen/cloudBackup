@@ -20,11 +20,11 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v3
 
 
       - name: Setup dotnet env
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
             dotnet-version: ${{ env.DOTNET_VERSION }} # SDK Version to use.  3.1.x uses the latest version of the 3.1 channel
 
@@ -42,7 +42,7 @@ jobs:
 
 
       - name: Upload artifact for Win-x64 as SingleFile
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v3
         with:
             name: RemoteIncrediBuild_Release_Win-x64_SingleFile
             path: cloudBackupUI/bin/Release/${{ env.RELEASE_SUBDIR }}-windows/win-x64/publish_singlefile/
@@ -53,7 +53,7 @@ jobs:
 
 
       - name: Upload artifact for Win-x64
-        uses: actions/upload-artifact@v2.2.4
+        uses: actions/upload-artifact@v3
         with:
             name: RemoteIncrediBuild_Release_Win-x64
             path: cloudBackupUI/bin/Release/${{ env.RELEASE_SUBDIR }}-windows/win-x64/publish/
