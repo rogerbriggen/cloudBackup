@@ -10,11 +10,13 @@ jobs:
         DOTNET_MULTILEVEL_LOOKUP: false      #use our version which we install ourself... see https://github.com/actions/setup-dotnet#environment-variables-to-use-with-dotnet
         DOTNET_NOLOGO: true                  #speed up things
         DOTNET_CLI_TELEMETRY_OPTOUT: true    #do not send telemetry to Microsoft
+        DOTNET_VERSION: 6.0.x
+        RELEASE_SUBDIR: net6.0
     strategy:
       matrix:
         operating-system: [windows-latest] #ubuntu-latest, macOS-latest
     #runs-on: [windows-latest]
-       
+      
     steps:
 
       - name: Checkout
@@ -24,7 +26,7 @@ jobs:
       - name: Setup dotnet env
         uses: actions/setup-dotnet@v1
         with:
-            dotnet-version: '5.0.x' # SDK Version to use.  3.1.x uses the latest version of the 3.1 channel
+            dotnet-version: ${{ env.DOTNET_VERSION }} # SDK Version to use.  3.1.x uses the latest version of the 3.1 channel
 
 
       - name: Build projects
@@ -36,22 +38,22 @@ jobs:
 
 
       - name: Publish for Win-x64 as SingleFile
-        run: dotnet publish --configuration Release --runtime win-x64 --output cloudBackupUI/bin/Release/net5.0-windows/win-x64/publish_singlefile/ /p:PublishSingleFile=true /p:PublishTrimmed=true cloudBackupUI/cloudBackupUI.csproj
+        run: dotnet publish --configuration Release --runtime win-x64 --output cloudBackupUI/bin/Release/${{ env.RELEASE_SUBDIR }}-windows/win-x64/publish_singlefile/ /p:PublishSingleFile=true cloudBackupUI/cloudBackupUI.csproj
 
 
       - name: Upload artifact for Win-x64 as SingleFile
         uses: actions/upload-artifact@v2.2.4
         with:
             name: RemoteIncrediBuild_Release_Win-x64_SingleFile
-            path: cloudBackupUI/bin/Release/net5.0-windows/win-x64/publish_singlefile/
+            path: cloudBackupUI/bin/Release/${{ env.RELEASE_SUBDIR }}-windows/win-x64/publish_singlefile/
 
       # With single file you cannot edit appsettings.json... or only in the temp folder... so we create it also not as single file
       - name: Publish for Win-x64
-        run: dotnet publish --configuration Release --runtime win-x64 /p:PublishTrimmed=true cloudBackupUI/cloudBackupUI.csproj
+        run: dotnet publish --configuration Release --runtime win-x64 cloudBackupUI/cloudBackupUI.csproj
 
 
       - name: Upload artifact for Win-x64
         uses: actions/upload-artifact@v2.2.4
         with:
             name: RemoteIncrediBuild_Release_Win-x64
-            path: cloudBackupUI/bin/Release/net5.0-windows/win-x64/publish/
+            path: cloudBackupUI/bin/Release/${{ env.RELEASE_SUBDIR }}-windows/win-x64/publish/
