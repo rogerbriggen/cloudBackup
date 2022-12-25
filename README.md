@@ -12,3 +12,6 @@ Windows:
 [ ] pause/resume backup job
 [ ] execute multipe backup jobs
 [ ] update backup jobs
+[ ] add cli
+[ ] add web ui
+
