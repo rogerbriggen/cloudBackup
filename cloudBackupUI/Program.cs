@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using System;
+using System.Windows.Forms;
 
 namespace cloudBackupUI
 {
@@ -27,7 +24,7 @@ namespace cloudBackupUI
             var serviceProvider = serviceCollection.BuildServiceProvider();
             var logger = serviceProvider.GetService<Microsoft.Extensions.Logging.ILogger<Program>>();
             var assembly = typeof(Program).Assembly;
-            logger.LogInformation("Application with version " + assembly.GetName().Version + " started...");
+            logger?.LogInformation("Application with version " + assembly.GetName().Version + " started...");
 
             //setup UI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
@@ -36,7 +33,7 @@ namespace cloudBackupUI
             Application.Run(new Form1());
 
             //Finish log
-            logger.LogInformation("Application closing...");
+            logger?.LogInformation("Application closing...");
             //Use for Microsoft logger.... for serilog, we do it with AppDomain.CurrentDomain.ProcessExit
             //serviceProvider.Dispose();
         }
@@ -111,4 +108,3 @@ namespace cloudBackupUI
 
 }
 
-  
