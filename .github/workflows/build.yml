@@ -40,7 +40,7 @@ jobs:
 
 
       - name: Publish for Win-x64 as SingleFile
-        run: dotnet publish --configuration Release --runtime win-x64 --output cloudBackupUI/bin/Release/${{ env.RELEASE_SUBDIR }}-windows/win-x64/publish_singlefile/ /p:PublishSingleFile=true cloudBackupUI/cloudBackupUI.csproj
+        run: dotnet publish --configuration Release --runtime win-x64 --self-contained --output cloudBackupUI/bin/Release/${{ env.RELEASE_SUBDIR }}-windows/win-x64/publish_singlefile/ /p:PublishSingleFile=true cloudBackupUI/cloudBackupUI.csproj
 
 
       - name: Upload artifact for Win-x64 as SingleFile
@@ -51,7 +51,7 @@ jobs:
 
       # With single file you cannot edit appsettings.json... or only in the temp folder... so we create it also not as single file
       - name: Publish for Win-x64
-        run: dotnet publish --configuration Release --runtime win-x64 cloudBackupUI/cloudBackupUI.csproj
+        run: dotnet publish --configuration Release --runtime win-x64 --self-contained cloudBackupUI/cloudBackupUI.csproj
 
 
       - name: Upload artifact for Win-x64
