@@ -21,6 +21,8 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 #avoid shallow clone so nerdbank gitversioning can do its work, see https://github.com/dotnet/Nerdbank.GitVersioning/blob/master/doc/cloudbuild.md
 
 
       - name: Setup dotnet env
