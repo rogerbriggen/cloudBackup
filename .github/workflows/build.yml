@@ -48,14 +48,3 @@ jobs:
         with:
             name: RemoteIncrediBuild_Release_Win-x64_SingleFile
             path: cloudBackupUI/bin/Release/${{ env.RELEASE_SUBDIR }}-windows/win-x64/publish_singlefile/
-
-      # With single file you cannot edit appsettings.json... or only in the temp folder... so we create it also not as single file
-      - name: Publish for Win-x64
-        run: dotnet publish --configuration Release --runtime win-x64 --self-contained cloudBackupUI/cloudBackupUI.csproj
-
-
-      - name: Upload artifact for Win-x64
-        uses: actions/upload-artifact@v3
-        with:
-            name: RemoteIncrediBuild_Release_Win-x64
-            path: cloudBackupUI/bin/Release/${{ env.RELEASE_SUBDIR }}-windows/win-x64/publish/
