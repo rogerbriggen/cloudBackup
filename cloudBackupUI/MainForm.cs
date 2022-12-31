@@ -1,4 +1,5 @@
-﻿// Roger Briggen licenses this file to you under the MIT license.
+﻿//
+// Roger Briggen licenses this file to you under the MIT license.
 //
 
 using System.Windows.Forms;

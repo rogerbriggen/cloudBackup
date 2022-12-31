@@ -294,7 +294,7 @@ dotnet_code_quality.ca2208.api_surface = public
 # License header
 # IDE0073: File header
 dotnet_diagnostic.IDE0073.severity = warning
-file_header_template = Roger Briggen licenses this file to you under the MIT license.\n
+file_header_template = \nRoger Briggen licenses this file to you under the MIT license.\n
 
 # Wrapping preferences
 csharp_preserve_single_line_statements = true
