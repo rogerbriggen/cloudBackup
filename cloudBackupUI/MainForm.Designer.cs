@@ -37,7 +37,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "MainForm";
             this.Text = "Cloud Backup";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
         }
