@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <!-- Optional: Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
 
@@ -21,6 +21,6 @@
     <!-- Add source link for GitHub -->
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
     <!-- Add GitVersioning -->
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.6.139" PrivateAssets="All"/>
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.9.50" PrivateAssets="All"/>
   </ItemGroup>
 </Project>
