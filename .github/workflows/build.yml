@@ -44,7 +44,7 @@ jobs:
 
 
       - name: Upload artifact for Win-x64 as SingleFile
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
             name: RemoteIncrediBuild_Release_Win-x64_SingleFile
             path: cloudBackupUI/bin/Release/${{ env.RELEASE_SUBDIR }}-windows/win-x64/publish_singlefile/
