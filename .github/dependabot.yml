@@ -15,6 +15,9 @@ updates:
           - "Microsoft.*"
           - "System.*"
           - "Azure.*"
+      serilog:
+        patterns:
+          - "Serilog.*"
   - package-ecosystem: "github-actions"
     # Workflow files stored in the
     # default location of `.github/workflows`
